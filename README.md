@@ -2,7 +2,7 @@
 
 > **AI 原生记忆层** —— 三层分离架构、纯文件系统、AI 自主维护。
 >
-> ⚠️ 本仓库为**面试展示版**——仅保留系统架构与设计文档。完整版含全部对话记忆，本地运行。
+> 纯文件系统 · 零依赖 · 人类可读 · AI 自主维护
 
 ---
 
@@ -43,14 +43,13 @@
 
 ## 实测数据
 
-| 指标 | 公开版 | 完整版（本地） |
-|------|:--:|:--:|
-| 节点数 | 12（系统设计） | 49（含对话记忆） |
-| 事实层 | ~2,400 字符 | 22,822 字符 |
-| 索引层 | ~1,300 字符 | 6,162 字符 |
-| 检索 token 节省 | **85%** | **71%** |
-| 检索类型 | 语义/时间/场景 ✅ | 语义/时间/场景 ✅ |
-| 跨会话链路 | ✅ 已验证 | ✅ 已验证 |
+| 指标 | 数据 |
+|------|------|
+| 节点数 | 12（系统设计事件） |
+| 检索 token 节省 | **85%**（vs 全量加载） |
+| 检索类型 | 语义匹配 / 时间线定位 / 场景过滤 |
+| 跨会话链路 | ✅ 已验证通过 |
+| 审阅迭代 | 经多轮交叉审阅，v0.1→v0.6 |
 
 ---
 
@@ -60,17 +59,10 @@
 .ledrigi_brainstem/
 ├── fact_layer.md            # 事实层 · 圣域
 ├── index_layer.md           # 索引层 · 别名+时间线+权重
-├── concept_dictionary.md    # 13 个专有概念的词典
-├── epistemology.md          # 8 条元原则·如何与记忆系统持异议
-├── abandoned_decisions.md   # 5 个废弃设计 + 盲区标注
-├── borrowed_ideas.md        # 外部借鉴记录（Graphiti/Mem0/Foam）
-├── retrieval_log.md         # 检索日志 + 未命中记录
-├── session_continuity.md    # 跨会话链路文件
-├── knowledge_base.html      # 可视化知识库（浏览器打开）
+├── abandoned_decisions.md   # 废弃设计记录
+├── borrowed_ideas.md        # 外部借鉴记录
 ├── memory_index_proposal.md # v0.6 设计提案
-├── memory_system_report.md  # v1.0 实施报告
-├── archive/                 # 时间切片快照
-└── state.json / thoughts.md # 脑干状态
+└── memory_system_report.md  # 实施报告
 ```
 
 ---
