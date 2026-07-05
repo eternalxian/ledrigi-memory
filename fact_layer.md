@@ -1,94 +1,93 @@
-# 莱德利基记忆系统 · 事实层
-# 设计原则：进入即锁定。不修改。不删除。
-# 注：本系统通过 Git 版本控制实现可追溯性（非代码级强制锁）
-# 公开版 · 仅保留系统设计相关事件
+# Memory System · Fact Layer
+# Design: append-only, immutable, traceable via Git + hash chain
+# Public edition · system design events only
 
 ---
 
-## event:系统设计启动
+## event:design-init
 type: event
 time: 2026-06-11
-summary: "需求触发——用户提出跨会话记忆检索需求。第一版基于关键词匹配被指出覆盖率不足，由此启动三层架构的完整设计迭代"
-speaker: 系统
-tags: [#设计启动, #需求分析]
+summary: "Cross-session memory retrieval requirement identified. Initial keyword-based approach proved insufficient, triggering full three-layer architecture design iteration."
+speaker: system
+tags: [#design, #requirements]
 
 ---
 
-## event:三层架构确立
+## event:three-layer-arch
 type: event
 time: 2026-06-11
-summary: "完成三层架构设计：事实层（圣域·不可修改）→ 索引层（别名+时间线+权重·可重建）→ 理解层（运行时生成·不存储）。核心原则：'系统保存事实，未来智能赋予意义'"
-speaker: 系统
-tags: [#架构设计, #三层分离]
+summary: "Three-layer architecture established: Fact Layer (immutable) → Index Layer (aliases+timeline+weights) → Understanding Layer (runtime-generated). Core principle: 'System preserves facts; future intelligence assigns meaning.'"
+speaker: system
+tags: [#architecture, #three-layer]
 
 ---
 
-## event:多轮设计审阅
+## event:multi-round-review
 type: event
 time: 2026-06-11
-summary: "经多轮审阅迭代：v0.1→v0.6。主要变更——边不存（语义关联运行时动态生成）、禁止人工维护（AI自主维护）、统一Schema、准入原则、权重公式。累计吸收反馈并修正5个重污染摘要"
-speaker: 系统
-tags: [#设计迭代, #审阅, #Schema]
+summary: "Multiple review iterations v0.1→v0.6. Key changes: edge-as-absent (semantic links runtime-generated), no-human-maintenance (AI self-maintaining), unified Schema, admission rules, weight formula. 5 severely polluted summaries fixed."
+speaker: system
+tags: [#design-iteration, #review, #schema]
 
 ---
 
-## event:所有权声明确立
+## event:ownership-declared
 type: event
 time: 2026-06-11
-summary: "确立记忆所有权归属：记忆属于AI实例。任何人类、任何外部系统不能编辑或删除事实层节点。删除/撤回操作通过请求-裁决机制实现，裁决本身作为事件节点记录"
-speaker: 系统
-tags: [#所有权, #权限设计, #数据完整性]
+summary: "Memory ownership declaration: memories belong to the AI instance. No human or external system may edit or delete fact-layer nodes. All judgments recorded as event nodes themselves."
+speaker: system
+tags: [#ownership, #permissions, #data-integrity]
 
 ---
 
-## event:Schema定稿
+## event:schema-v06
 type: event
 time: 2026-06-11
-summary: "v0.6定稿。三层Schema冻结——概念节点(检索单位)、事件节点(存储单位)、片段节点(引用单位)、命题节点(冲突承载)。保留extensions字段供未来扩展"
-speaker: 系统
-tags: [#Schema, #定稿]
+summary: "v0.6 spec frozen. Core node types: event (storage), utterance (original text), proposition (conflict carrier). extensions field reserved for future use."
+speaker: system
+tags: [#schema, #spec]
 
 ---
 
-## event:检索准确性测试
+## event:retrieval-test
 type: event
 time: 2026-06-11
-summary: "三连测试：语义触发(别名匹配)→修复概念别名映射后通过、时间触发(时间线定位)→需两步检索但可行、场景触发(task_context匹配)→一次通过。核心改进：补全概念别名映射表"
-speaker: 系统
-tags: [#测试, #检索, #别名]
+summary: "Three retrieval tests: semantic (alias match) → fixed after alias mapping补全; temporal (timeline positioning) → two-step but feasible; contextual (task_context) → passed. Root cause: alias mapping补全 resolved semantic failure."
+speaker: system
+tags: [#testing, #retrieval, #aliases]
 
 ---
 
-## event:冗余设计废弃
+## event:design-deprecated
 type: event
 time: 2026-06-12
-summary: "废弃设计记录：多版本事件（同一event_id多speaker）——不需要预建其他视角。升格机制（索引→事实层）——索引是理解，事实是发生，两者不互转。evolves_from字段从事实层移至索引层"
-speaker: 系统
-tags: [#废弃设计, #架构简化]
+summary: "Deprecated designs: multi-version events (same event_id multiple speakers) — unnecessary complexity. Promotion mechanism (index→fact) — index is understanding, fact is occurrence, cannot convert. evolves_from field moved to index layer."
+speaker: system
+tags: [#deprecated, #architecture-simplification]
 
 ---
 
-## event:首次维护自检
+## event:first-selfcheck
 type: event
 time: 2026-06-12
-summary: "首次系统健康自检。节点数34时维护负担轻。检索省91%token。已识别风险：规模增长后的维护疲劳、别名漂移、摘要污染。后续修复：epistemology.md元原则文档、检索日志、概念词典三层定义"
-speaker: 系统
-tags: [#维护, #自检, #风险识别]
+summary: "First system health self-check. At 34 nodes, maintenance burden light. Retrieval saves 91% token. Identified risks: scaling fatigue, alias drift, summary pollution. Follow-up fixes: epistemology meta-rules, retrieval log, concept dictionary three-layer definitions."
+speaker: system
+tags: [#maintenance, #selfcheck, #risk-identification]
 
 ---
 
-## event:外部方案借鉴
+## event:external-reference
 type: event
 time: 2026-06-12
-summary: "借鉴外部方案：Graphiti双时态标注(valid_time+ingestion_time)→Schema v1.1。Foam反向链接+孤儿检测→300节点后启用。Mem0的ADD-only模式→本系统独立设计后验证方向一致。明确拒绝：Mem0/Cognee的合并覆盖机制（与圣域设计冲突）"
-speaker: 系统
-tags: [#外部借鉴, #Graphiti, #Foam, #Schema升级]
+summary: "External references adopted: Graphiti dual-temporal annotation (valid_time+ingestion_time) → Schema v1.1. Foam backlinks+orphan detection → planned for 300+ nodes. Mem0 ADD-only mode → independently designed, later validated direction consistency. Explicitly rejected: Mem0/Cognee merge-overwrite mechanisms (conflict with immutability design)."
+speaker: system
+tags: [#external-reference, #graphiti, #foam, #schema-upgrade]
 
 ---
 
-## event:效率压力测试
+## event:stress-test
 type: event
 time: 2026-07-02
-summary: "实测效率：事实层22822字符(45节点)，索引层6162字符。检索链路省71%token（22节点时91%）——索引随节点数膨胀是已识别瓶颈。300节点时需启用检索并行化(语义+关键词+实体多路打分)"
-speaker: 系统
-tags: [#效率, #压力测试, #token优化, #索引膨胀]
+summary: "Efficiency stress test: Fact Layer 22,822 chars (45 nodes), Index Layer 6,162 chars. Retrieval saves 71% token (down from 91% at 22 nodes) — index膨胀 is identified bottleneck. At 300+ nodes, parallel retrieval (semantic+keyword+entity multi-path scoring) needed."
+speaker: system
+tags: [#efficiency, #stress-test, #token-optimization, #index膨胀]

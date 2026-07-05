@@ -1,58 +1,58 @@
-# 莱德利基记忆系统 · 索引层
-# 可重建、可覆盖。version: 1
+# Memory System · Index Layer
+# Rebuildable, overridable. version: 1
 
-## 时间线
+## Timeline
 
-2026-06-11  event:系统设计启动
-2026-06-11  event:三层架构确立
-2026-06-11  event:多轮设计审阅
-2026-06-11  event:所有权声明确立
-2026-06-11  event:Schema定稿
-2026-06-11  event:检索准确性测试
-2026-06-12  event:冗余设计废弃
-2026-06-12  event:首次维护自检
-2026-06-12  event:外部方案借鉴
-2026-07-02  event:效率压力测试
+2026-06-11  event:design-init
+2026-06-11  event:three-layer-arch
+2026-06-11  event:multi-round-review
+2026-06-11  event:ownership-declared
+2026-06-11  event:schema-v06
+2026-06-11  event:retrieval-test
+2026-06-12  event:design-deprecated
+2026-06-12  event:first-selfcheck
+2026-06-12  event:external-reference
+2026-07-02  event:stress-test
 
-## 权重排序（weight = importance + recent_access + retrieval_count）
+## Weight Ranking
 
 importance:5
-  event:所有权声明确立
-  event:三层架构确立
+  event:ownership-declared
+  event:three-layer-arch
 
 importance:4
-  event:多轮设计审阅
-  event:Schema定稿
-  event:系统设计启动
+  event:multi-round-review
+  event:schema-v06
+  event:design-init
 
-## 概念映射
+## Concept Mapping
 
-架构设计:
-  children: [event:系统设计启动, event:三层架构确立, event:Schema定稿]
+architecture:
+  children: [event:design-init, event:three-layer-arch, event:schema-v06]
 
-数据完整性:
-  children: [event:所有权声明确立]
+data-integrity:
+  children: [event:ownership-declared]
 
-迭代与测试:
-  children: [event:多轮设计审阅, event:检索准确性测试, event:效率压力测试]
+iteration-testing:
+  children: [event:multi-round-review, event:retrieval-test, event:stress-test]
 
-架构简化:
-  children: [event:冗余设计废弃]
+deprecated:
+  children: [event:design-deprecated]
 
-运维:
-  children: [event:首次维护自检, event:外部方案借鉴]
+maintenance:
+  children: [event:first-selfcheck, event:external-reference]
 
-## 检索入口（aliases → node ID）
+## Aliases
 
-架构 → event:三层架构确立
-Schema → event:Schema定稿
-所有权 → event:所有权声明确立
-测试 → event:检索准确性测试
-效率 → event:效率压力测试
-token → event:效率压力测试
-废弃 → event:冗余设计废弃
-借鉴 → event:外部方案借鉴
-双时态 → event:外部方案借鉴
-设计 → event:系统设计启动
-审阅 → event:多轮设计审阅
-自检 → event:首次维护自检
+architecture -> event:three-layer-arch
+schema -> event:schema-v06
+ownership -> event:ownership-declared
+testing -> event:retrieval-test
+efficiency -> event:stress-test
+token -> event:stress-test
+deprecated -> event:design-deprecated
+reference -> event:external-reference
+dual-temporal -> event:external-reference
+design -> event:design-init
+review -> event:multi-round-review
+selfcheck -> event:first-selfcheck

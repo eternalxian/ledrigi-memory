@@ -1,0 +1,8 @@
+[
+  {"query": "为什么大家的答案不能复用", "expected": "event:problem_discovered"},
+  {"query": "拒答机制", "expected": "event:rag_scope_defined"},
+  {"query": "机密资料如何处理", "expected": "event:security_layers_defined"},
+  {"query": "文档加载失败", "expected": "event:auth_issue_resolved"},
+  {"query": "自动化测试", "expected": "event:function_tests_passed"},
+  {"query": "检索评测", "expected": "event:retrieval_eval_passed"}
+]
